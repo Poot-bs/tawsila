@@ -55,21 +55,21 @@ Spring Boot + HTML/CSS/JavaScript + PostgreSQL
 ## 5. Technology Stack
 
 ### Backend
-- Java 17
-- Spring Boot 3.2.4
-- Spring Web
-- Spring Actuator
-- PostgreSQL driver
+- **Java 17**
+- **Spring Boot 3.4+**
+- **Spring Web / Actuator**
+- **PostgreSQL / JDBC**
 
 ### Frontend
-- HTML5
-- CSS3
-- Vanilla JavaScript
+- **Next.js 15** (App Router)
+- **React 19**
+- **Framer Motion** (Smooth Animations)
+- **Tailwind CSS 4**
 
 ### Deployment / DevOps
-- Railway for hosting
-- PostgreSQL on Railway or another managed database
-- GitHub Actions CI
+- **Docker** (Containerization)
+- **Render** (Backend Hosting)
+- **Vercel** (Frontend Hosting)
 
 ---
 
@@ -77,23 +77,35 @@ Spring Boot + HTML/CSS/JavaScript + PostgreSQL
 
 ```mermaid
 flowchart LR
-    U[User Browser] --> F[Frontend Pages\nHTML / CSS / JS]
-    F --> A[Spring Boot App\nREST Controllers]
+    U[User Browser] --> F[Next.js 15 Frontend\nReact 19 / Tailwind]
+    F --> A[Spring Boot Backend\nREST Controllers]
     A --> S[Services\nBusiness Rules]
-    S --> R[Repositories\nIn-Memory or PostgreSQL]
-    R --> D[(Database)]
+    S --> R[Repositories\nStrategy Pattern]
+    R --> D[(PostgreSQL / Memory)]
 
     A --> H[/Health Endpoint\n/api/system/health/]
 ```
 
-### Key idea
-- The frontend calls the backend through `/api` endpoints.
-- The backend contains all business rules and persistence selection.
-- Persistence mode is controlled by environment variables.
+### Key Architectural Decisions
+- **Layered Architecture:** Strict separation of concerns (Controller -> Service -> Repository).
+- **Persistence Strategy Pattern:** Switchable storage backend (Memory/Postgres) via environment variables.
+- **RESTful Design:** Stateless communication between frontend and backend.
+- **Localization:** Integrated `next-intl` for multi-language support (FR, EN, AR).
 
 ---
 
-## 7. UML Class Diagram
+## 7. OOP (Object-Oriented Programming) Principles
+
+As a project for the **POO module**, Tawsila.tn implements core Java OOP concepts:
+
+1. **Encapsulation:** All domain entities (`User`, `Trajet`, etc.) use private fields with controlled access and validation logic.
+2. **Inheritance:** An abstract `User` base class provides common identity and security logic, specialized by `Passager`, `Chauffeur`, and `Admin`.
+3. **Abstraction:** Business services interact with `Repository` interfaces rather than concrete implementations, allowing storage flexibility.
+4. **Polymorphism:** The application dynamically chooses the correct repository implementation (In-Memory or Postgres) at runtime based on configuration.
+
+---
+
+## 8. UML Class Diagram
 
 ```mermaid
 classDiagram
