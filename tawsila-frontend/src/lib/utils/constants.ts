@@ -55,12 +55,18 @@ export const API_BASE_URL = (() => {
   const envUrl = process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL;
   
   if (envUrl) {
-    // Ensure it ends with /api if not already present
-    return envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
+    const resolved = envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
+    if (typeof window !== 'undefined') {
+      console.log('[DEBUG] API Base URL (env):', resolved);
+    }
+    return resolved;
   }
   
-  // Fallback for development
-  return typeof window !== 'undefined' ? '/api' : 'http://localhost:8080/api';
+  const fallback = typeof window !== 'undefined' ? '/api' : 'http://localhost:8080/api';
+  if (typeof window !== 'undefined') {
+    console.warn('[DEBUG] API Base URL (fallback):', fallback);
+  }
+  return fallback;
 })();
 
 /** WebSocket URL */
