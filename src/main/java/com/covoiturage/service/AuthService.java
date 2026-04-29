@@ -11,6 +11,7 @@ import com.covoiturage.model.Passager;
 import com.covoiturage.model.User;
 import com.covoiturage.model.UserStatus;
 import com.covoiturage.repository.UserRepository;
+import com.covoiturage.security.JwtService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,10 +23,12 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class AuthService {
     private final UserRepository userRepository;
+    private final JwtService jwtService;
     private final Map<String, String> sessionsByToken;
 
-    public AuthService(UserRepository userRepository) {
+    public AuthService(UserRepository userRepository, JwtService jwtService) {
         this.userRepository = userRepository;
+        this.jwtService = jwtService;
         this.sessionsByToken = new ConcurrentHashMap<>();
     }
 
@@ -70,7 +73,7 @@ public class AuthService {
         if (!ok) {
             throw new ValidationException("Identifiants invalides");
         }
-        String token = UUID.randomUUID().toString();
+        String token = jwtService.generateToken(user, 86400);
         sessionsByToken.put(token, user.getIdentifiant());
         return token;
     }

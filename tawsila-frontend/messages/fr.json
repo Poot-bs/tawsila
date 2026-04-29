@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "trips": "Trajets",
+    "reservations": "Réservations",
+    "notifications": "Notifications",
+    "driverSpace": "Espace Chauffeur",
+    "admin": "Administration",
+    "login": "Connexion",
+    "register": "Inscription",
+    "logout": "Déconnexion",
+    "profile": "Profil",
+    "chat": "Messages",
+    "payments": "Paiements"
+  },
+  "profile": {
+    "title": "Paramètres du profil",
+    "subtitle": "Gérez vos véhicules, vos moyens de paiement et vos préférences.",
+    "personalSection": "Informations personnelles",
+    "personalName": "Nom",
+    "personalEmail": "Email",
+    "personalRole": "Rôle",
+    "personalNote": "Pour modifier ces informations, contactez l'administration.",
+    "vehicleSection": "Véhicules",
+    "vehicleEmpty": "Aucun véhicule enregistré pour le moment.",
+    "addVehicle": "Ajouter un véhicule",
+    "vehicleBrand": "Marque",
+    "vehicleModel": "Modèle",
+    "vehiclePlate": "Immatriculation",
+    "vehicleCapacity": "Capacité",
+    "saveVehicle": "Enregistrer le véhicule",
+    "paymentSection": "Moyens de paiement",
+    "paymentEmpty": "Aucun moyen de paiement enregistré.",
+    "addPayment": "Ajouter un moyen de paiement",
+    "cardHolder": "Nom du titulaire",
+    "cardType": "Type de carte",
+    "cardLast4": "4 derniers chiffres",
+    "savePayment": "Enregistrer le moyen de paiement",
+    "autoAccept": "Réservation instantanée",
+    "autoAcceptHint": "Accepter automatiquement les réservations entrantes.",
+    "autoAcceptOn": "Activé",
+    "autoAcceptOff": "Désactivé",
+    "seats": "places",
+    "adminNotice": "Les paramètres personnalisés sont disponibles pour les passagers et les chauffeurs.",
+    "loading": "Chargement...",
+    "saving": "Enregistrement..."
+  },
+  "hero": {
+    "badge": "Plateforme de Covoiturage Universitaire",
+    "title": "Voyagez plus loin,",
+    "titleHighlight": "ensemble.",
+    "subtitle": "Tawsila connecte les étudiants et chauffeurs pour des trajets partagés sécurisés. Réservez votre place, gérez vos trajets et payez directement en ligne.",
+    "ctaPrimary": "Trouver un trajet",
+    "ctaSecondary": "Proposer un trajet",
+    "trustedBy": "Adopté par les universités tunisiennes"
+  },
+  "features": {
+    "sectionTitle": "Tout ce dont vous avez besoin",
+    "sectionSubtitle": "Une plateforme complète pour simplifier vos déplacements universitaires",
+    "smartMatch": {
+      "title": "Correspondances intelligentes",
+      "description": "Notre algorithme trouve les trajets les plus adaptés à vos horaires et votre localisation."
+    },
+    "securePayment": {
+      "title": "Paiement sécurisé",
+      "description": "Payez en ligne en toute confiance avec notre système de paiement simulé et transparent."
+    },
+    "realTimeChat": {
+      "title": "Chat en temps réel",
+      "description": "Communiquez directement avec votre chauffeur grâce à la messagerie instantanée intégrée."
+    },
+    "ratings": {
+      "title": "Avis & confiance",
+      "description": "Consultez les évaluations des chauffeurs et voyagez en toute sérénité."
+    },
+    "instantBooking": {
+      "title": "Réservation instantanée",
+      "description": "Certains chauffeurs acceptent automatiquement — réservez en un clic."
+    },
+    "mapPreview": {
+      "title": "Aperçu du trajet",
+      "description": "Visualisez l'itinéraire complet sur une carte interactive avant de réserver."
+    }
+  },
+  "howItWorks": {
+    "sectionTitle": "Comment ça marche",
+    "sectionSubtitle": "En trois étapes simples",
+    "step1": {
+      "title": "Recherchez",
+      "description": "Entrez votre destination et vos dates pour trouver les trajets disponibles."
+    },
+    "step2": {
+      "title": "Réservez",
+      "description": "Choisissez un trajet, confirmez votre place et payez en ligne."
+    },
+    "step3": {
+      "title": "Voyagez",
+      "description": "Retrouvez votre chauffeur au point de départ et profitez du trajet."
+    }
+  },
+  "socialProof": {
+    "sectionTitle": "Ils nous font confiance",
+    "stat1Label": "Utilisateurs actifs",
+    "stat1Value": "2,500+",
+    "stat2Label": "Trajets partagés",
+    "stat2Value": "15,000+",
+    "stat3Label": "Économies moyennes",
+    "stat3Value": "60%",
+    "stat4Label": "Note moyenne",
+    "stat4Value": "4.8/5"
+  },
+  "cta": {
+    "title": "Prêt à partager la route ?",
+    "subtitle": "Rejoignez des milliers d'étudiants qui économisent chaque jour sur leurs trajets.",
+    "button": "Commencer maintenant"
+  },
+  "footer": {
+    "tagline": "La plateforme de covoiturage pour les étudiants tunisiens.",
+    "platform": "Plateforme",
+    "legal": "Légal",
+    "contact": "Contact",
+    "searchTrips": "Rechercher un trajet",
+    "proposeTrip": "Proposer un trajet",
+    "howItWorks": "Comment ça marche",
+    "termsOfService": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité",
+    "contactUs": "Nous contacter",
+    "support": "Support",
+    "copyright": "© {year} Tawsila. Tous droits réservés."
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "noResults": "Aucun résultat trouvé",
+    "install": "Installer l'app"
+  },
+  "meta": {
+    "homeTitle": "Tawsila — Covoiturage Universitaire en Tunisie",
+    "homeDescription": "Plateforme de covoiturage pour les étudiants tunisiens. Trouvez ou proposez des trajets, payez en ligne et voyagez en toute sécurité."
+  }
+}

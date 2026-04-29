@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "home": "Home",
+    "trips": "Trips",
+    "reservations": "Reservations",
+    "notifications": "Notifications",
+    "driverSpace": "Driver Space",
+    "admin": "Administration",
+    "login": "Login",
+    "register": "Sign Up",
+    "logout": "Logout",
+    "profile": "Profile",
+    "chat": "Messages",
+    "payments": "Payments"
+  },
+  "profile": {
+    "title": "Profile settings",
+    "subtitle": "Manage vehicles, payment methods, and preferences.",
+    "personalSection": "Personal information",
+    "personalName": "Name",
+    "personalEmail": "Email",
+    "personalRole": "Role",
+    "personalNote": "To change these details, contact an administrator.",
+    "vehicleSection": "Vehicles",
+    "vehicleEmpty": "No vehicles registered yet.",
+    "addVehicle": "Add vehicle",
+    "vehicleBrand": "Brand",
+    "vehicleModel": "Model",
+    "vehiclePlate": "License plate",
+    "vehicleCapacity": "Capacity",
+    "saveVehicle": "Save vehicle",
+    "paymentSection": "Payment methods",
+    "paymentEmpty": "No payment methods saved.",
+    "addPayment": "Add payment method",
+    "cardHolder": "Card holder",
+    "cardType": "Card type",
+    "cardLast4": "Last 4 digits",
+    "savePayment": "Save payment method",
+    "autoAccept": "Instant booking",
+    "autoAcceptHint": "Automatically accept incoming reservations.",
+    "autoAcceptOn": "Enabled",
+    "autoAcceptOff": "Disabled",
+    "seats": "seats",
+    "adminNotice": "Custom settings are available for passengers and drivers.",
+    "loading": "Loading...",
+    "saving": "Saving..."
+  },
+  "hero": {
+    "badge": "University Carpooling Platform",
+    "title": "Travel further,",
+    "titleHighlight": "together.",
+    "subtitle": "Tawsila connects students and drivers for safe shared rides. Book your seat, manage your trips, and pay online.",
+    "ctaPrimary": "Find a ride",
+    "ctaSecondary": "Offer a ride",
+    "trustedBy": "Trusted by Tunisian universities"
+  },
+  "features": {
+    "sectionTitle": "Everything you need",
+    "sectionSubtitle": "A complete platform to simplify your university commute",
+    "smartMatch": {
+      "title": "Smart matching",
+      "description": "Our algorithm finds the best rides matching your schedule and location."
+    },
+    "securePayment": {
+      "title": "Secure payment",
+      "description": "Pay online with confidence using our transparent simulated payment system."
+    },
+    "realTimeChat": {
+      "title": "Real-time chat",
+      "description": "Communicate directly with your driver through the built-in instant messaging."
+    },
+    "ratings": {
+      "title": "Ratings & trust",
+      "description": "Check driver reviews and travel with peace of mind."
+    },
+    "instantBooking": {
+      "title": "Instant booking",
+      "description": "Some drivers auto-accept — book your seat in one click."
+    },
+    "mapPreview": {
+      "title": "Route preview",
+      "description": "Visualize the complete route on an interactive map before booking."
+    }
+  },
+  "howItWorks": {
+    "sectionTitle": "How it works",
+    "sectionSubtitle": "In three simple steps",
+    "step1": {
+      "title": "Search",
+      "description": "Enter your destination and dates to find available rides."
+    },
+    "step2": {
+      "title": "Book",
+      "description": "Choose a ride, confirm your seat, and pay online."
+    },
+    "step3": {
+      "title": "Travel",
+      "description": "Meet your driver at the departure point and enjoy the ride."
+    }
+  },
+  "socialProof": {
+    "sectionTitle": "Trusted by thousands",
+    "stat1Label": "Active users",
+    "stat1Value": "2,500+",
+    "stat2Label": "Shared rides",
+    "stat2Value": "15,000+",
+    "stat3Label": "Average savings",
+    "stat3Value": "60%",
+    "stat4Label": "Average rating",
+    "stat4Value": "4.8/5"
+  },
+  "cta": {
+    "title": "Ready to share the road?",
+    "subtitle": "Join thousands of students saving on their daily commute.",
+    "button": "Get started"
+  },
+  "footer": {
+    "tagline": "The carpooling platform for Tunisian students.",
+    "platform": "Platform",
+    "legal": "Legal",
+    "contact": "Contact",
+    "searchTrips": "Search rides",
+    "proposeTrip": "Offer a ride",
+    "howItWorks": "How it works",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "contactUs": "Contact Us",
+    "support": "Support",
+    "copyright": "© {year} Tawsila. All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "noResults": "No results found",
+    "install": "Install app"
+  },
+  "meta": {
+    "homeTitle": "Tawsila — University Carpooling in Tunisia",
+    "homeDescription": "Carpooling platform for Tunisian students. Find or offer rides, pay online, and travel safely."
+  }
+}

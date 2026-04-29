@@ -1,25 +1,57 @@
 # Maven / Java
-/target/
-!.mvn/wrapper/maven-wrapper.jar
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
 
-# IDE
+# IDEs and Editors
 .idea/
-.vscode/*.log
 *.iml
+*.iws
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+.classpath
+.project
+.settings/
+*.swp
+*.swo
 
-# OS
+# Node / Frontend
+node_modules/
+tawsila-frontend/node_modules/
+tawsila-frontend/.next/
+tawsila-frontend/out/
+tawsila-frontend/build/
+tawsila-frontend/.vercel/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.tsbuildinfo
+
+# OS Files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Local environment and secrets
+# Environment and Secrets
 .env
 .env.local
+.env.development.local
+.env.test.local
+.env.production.local
 .env.*.local
+*.pem
+*.key
 
-# Runtime artifacts
+# Runtime / Temp
 runtime.log
+backend.log
+backend2.log
 .app.pid
 hs_err_pid*
-
-# Node-like noise (if frontend tooling added later)
-node_modules/
+tmp/
+temp/

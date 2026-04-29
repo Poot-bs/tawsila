@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* ============================================
+   TAWSILA DESIGN SYSTEM
+   Ported from legacy style.css design tokens
+   ============================================ */
+
+@theme {
+  /* Primary palette — Teal */
+  --color-primary: #1F7A8C;
+  --color-primary-light: #2D9EB3;
+  --color-primary-dark: #155866;
+  
+  /* Secondary palette — Dark Slate Blue */
+  --color-secondary: #022B3A;
+  --color-secondary-light: #044359;
+  --color-secondary-dark: #01141C;
+
+  /* Accent palette — Light Blue */
+  --color-accent: #BFDBF7;
+
+
+  /* Semantic colors */
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-danger: #DC2626;
+
+  /* Spacing scale */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+  --animate-gradient: gradient 8s ease infinite;
+  --animate-fade-up: fade-up 0.6s ease-out forwards;
+  --animate-scale-in: scale-in 0.3s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.4s ease-out forwards;
+}
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (runtime theming)
+   ============================================ */
+:root {
+  --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', var(--font-primary);
+  --font-body: 'Work Sans', var(--font-primary);
+
+  /* Surface / background */
+  --surface: #ffffff;
+  --surface-hover: #F5F7FA;
+  --surface-elevated: #ffffff;
+  --bg: #E1E5F2; /* Lighter Blue/Gray */
+  --bg-subtle: #BFDBF7; /* Light Blue */
+
+  /* Text */
+  --text: #022B3A; /* Dark Slate Blue */
+  --text-muted: #5B7B88;
+  --text-inverse: #ffffff;
+
+  /* Borders */
+  --border: #D0D6E6;
+  --border-hover: #BFDBF7;
+  --ring: #1F7A8C80;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(2 43 58 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(2 43 58 / 0.1), 0 2px 4px -2px rgb(2 43 58 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(2 43 58 / 0.1), 0 4px 6px -4px rgb(2 43 58 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(2 43 58 / 0.1), 0 8px 10px -6px rgb(2 43 58 / 0.1);
+  --shadow-glow: 0 0 30px rgb(31 122 140 / 0.2);
+
+  /* Radii */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Dark mode */
+.dark {
+  --surface: #022B3A;
+  --surface-hover: #044359;
+  --surface-elevated: #033547;
+  --bg: #01141C;
+  --bg-subtle: #022B3A;
+
+  --text: #E1E5F2;
+  --text-muted: #8AA4B0;
+  --text-inverse: #022B3A;
+
+  --border: #044359;
+  --border-hover: #1F7A8C;
+  --ring: #BFDBF780;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+  --shadow-glow: 0 0 30px rgb(191 219 247 / 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --surface: #022B3A;
+    --surface-hover: #044359;
+    --surface-elevated: #033547;
+    --bg: #01141C;
+    --bg-subtle: #022B3A;
+
+    --text: #E1E5F2;
+    --text-muted: #8AA4B0;
+    --text-inverse: #022B3A;
+
+    --border: #044359;
+    --border-hover: #1F7A8C;
+    --ring: #BFDBF780;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+    --shadow-glow: 0 0 30px rgb(191 219 247 / 0.15);
+  }
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--text);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus visible ring */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   GRADIENT UTILITIES
+   ============================================ */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+
+.gradient-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ============================================
+   GLASS MORPHISM
+   ============================================ */
+.glass {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+}
+
+.glass-heavy {
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

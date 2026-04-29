@@ -1,0 +1,18 @@
+{
+  "name": "Tawsila - Covoiturage Universitaire",
+  "short_name": "Tawsila",
+  "description": "Plateforme de covoiturage pour les étudiants en Tunisie",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#C800DF",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/globe.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

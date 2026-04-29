@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "trips": "الرحلات",
+    "reservations": "الحجوزات",
+    "notifications": "الإشعارات",
+    "driverSpace": "فضاء السائق",
+    "admin": "الإدارة",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "logout": "تسجيل الخروج",
+    "profile": "الملف الشخصي",
+    "chat": "الرسائل",
+    "payments": "المدفوعات"
+  },
+  "profile": {
+    "title": "إعدادات الملف الشخصي",
+    "subtitle": "إدارة المركبات وطرق الدفع والتفضيلات.",
+    "personalSection": "المعلومات الشخصية",
+    "personalName": "الاسم",
+    "personalEmail": "البريد الإلكتروني",
+    "personalRole": "الدور",
+    "personalNote": "لتغيير هذه المعلومات، تواصل مع الإدارة.",
+    "vehicleSection": "المركبات",
+    "vehicleEmpty": "لا توجد مركبات مسجلة بعد.",
+    "addVehicle": "إضافة مركبة",
+    "vehicleBrand": "الماركة",
+    "vehicleModel": "الطراز",
+    "vehiclePlate": "رقم اللوحة",
+    "vehicleCapacity": "السعة",
+    "saveVehicle": "حفظ المركبة",
+    "paymentSection": "طرق الدفع",
+    "paymentEmpty": "لا توجد طرق دفع محفوظة.",
+    "addPayment": "إضافة طريقة دفع",
+    "cardHolder": "اسم حامل البطاقة",
+    "cardType": "نوع البطاقة",
+    "cardLast4": "آخر 4 أرقام",
+    "savePayment": "حفظ طريقة الدفع",
+    "autoAccept": "الحجز الفوري",
+    "autoAcceptHint": "قبول الحجوزات الواردة تلقائيا.",
+    "autoAcceptOn": "مفعل",
+    "autoAcceptOff": "غير مفعل",
+    "seats": "مقاعد",
+    "adminNotice": "الإعدادات المخصصة متاحة للركاب والسائقين.",
+    "loading": "جاري التحميل...",
+    "saving": "جار الحفظ..."
+  },
+  "hero": {
+    "badge": "منصة مشاركة السيارات الجامعية",
+    "title": "سافر أبعد،",
+    "titleHighlight": "معاً.",
+    "subtitle": "توصيلة تربط الطلاب والسائقين لرحلات مشتركة آمنة. احجز مقعدك، وأدر رحلاتك، وادفع عبر الإنترنت.",
+    "ctaPrimary": "ابحث عن رحلة",
+    "ctaSecondary": "اعرض رحلة",
+    "trustedBy": "معتمدة من الجامعات التونسية"
+  },
+  "features": {
+    "sectionTitle": "كل ما تحتاجه",
+    "sectionSubtitle": "منصة متكاملة لتبسيط تنقلاتك الجامعية",
+    "smartMatch": {
+      "title": "مطابقة ذكية",
+      "description": "خوارزميتنا تجد أفضل الرحلات المناسبة لجدولك وموقعك."
+    },
+    "securePayment": {
+      "title": "دفع آمن",
+      "description": "ادفع عبر الإنترنت بثقة مع نظام الدفع الشفاف."
+    },
+    "realTimeChat": {
+      "title": "محادثة فورية",
+      "description": "تواصل مباشرة مع سائقك عبر الرسائل الفورية المدمجة."
+    },
+    "ratings": {
+      "title": "تقييمات وثقة",
+      "description": "اطلع على تقييمات السائقين وسافر بطمأنينة."
+    },
+    "instantBooking": {
+      "title": "حجز فوري",
+      "description": "بعض السائقين يقبلون تلقائياً — احجز بنقرة واحدة."
+    },
+    "mapPreview": {
+      "title": "معاينة المسار",
+      "description": "تصور المسار الكامل على خريطة تفاعلية قبل الحجز."
+    }
+  },
+  "howItWorks": {
+    "sectionTitle": "كيف يعمل",
+    "sectionSubtitle": "في ثلاث خطوات بسيطة",
+    "step1": {
+      "title": "ابحث",
+      "description": "أدخل وجهتك وتواريخك للعثور على الرحلات المتاحة."
+    },
+    "step2": {
+      "title": "احجز",
+      "description": "اختر رحلة، أكد مقعدك، وادفع عبر الإنترنت."
+    },
+    "step3": {
+      "title": "سافر",
+      "description": "قابل سائقك في نقطة الانطلاق واستمتع بالرحلة."
+    }
+  },
+  "socialProof": {
+    "sectionTitle": "يثقون بنا",
+    "stat1Label": "مستخدم نشط",
+    "stat1Value": "+2,500",
+    "stat2Label": "رحلة مشتركة",
+    "stat2Value": "+15,000",
+    "stat3Label": "متوسط التوفير",
+    "stat3Value": "%60",
+    "stat4Label": "متوسط التقييم",
+    "stat4Value": "4.8/5"
+  },
+  "cta": {
+    "title": "مستعد لمشاركة الطريق؟",
+    "subtitle": "انضم لآلاف الطلاب الذين يوفرون يومياً في تنقلاتهم.",
+    "button": "ابدأ الآن"
+  },
+  "footer": {
+    "tagline": "منصة مشاركة السيارات للطلاب التونسيين.",
+    "platform": "المنصة",
+    "legal": "قانوني",
+    "contact": "اتصل بنا",
+    "searchTrips": "البحث عن رحلة",
+    "proposeTrip": "اعرض رحلة",
+    "howItWorks": "كيف يعمل",
+    "termsOfService": "شروط الخدمة",
+    "privacyPolicy": "سياسة الخصوصية",
+    "contactUs": "تواصل معنا",
+    "support": "الدعم",
+    "copyright": "© {year} توصيلة. جميع الحقوق محفوظة."
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "retry": "إعادة المحاولة",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "search": "بحث",
+    "noResults": "لم يتم العثور على نتائج",
+    "install": "تثبيت التطبيق"
+  },
+  "meta": {
+    "homeTitle": "توصيلة — مشاركة السيارات الجامعية في تونس",
+    "homeDescription": "منصة مشاركة السيارات للطلاب التونسيين. ابحث أو اعرض رحلات، ادفع عبر الإنترنت، وسافر بأمان."
+  }
+}
