@@ -37,7 +37,7 @@ The backend is a Spring Boot application.
 4.  Select the `tawsila-frontend` folder as the **Root Directory**.
 5.  **Framework Preset:** `Next.js`.
 6.  **Environment Variables:**
-    *   `NEXT_PUBLIC_API_BASE_URL`: `https://tawsila-backend.onrender.com/api` (The URL of your deployed backend)
+    *   `NEXT_PUBLIC_API_BASE_URL`: `https://tawsila-backend-ztnw.onrender.com` (The URL of your deployed backend)
 7.  Click **Deploy**.
 
 ### Option B: Render (Static Site)
@@ -54,7 +54,7 @@ Once your frontend is deployed (e.g., `https://tawsila.vercel.app`), you **must*
 
 1.  In the backend code (`WebSecurityConfig.java`), update `allowedOrigins`:
     ```java
-    .allowedOrigins("http://localhost:3000", "https://your-frontend-url.vercel.app")
+    .allowedOrigins("http://localhost:3000", "https://tawsila-eta.vercel.app")
     ```
 2.  Redeploy the backend.
 
