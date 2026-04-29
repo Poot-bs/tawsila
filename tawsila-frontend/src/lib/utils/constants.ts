@@ -51,14 +51,32 @@ export const ROLE_ROUTES: Record<UserRole, string[]> = {
 };
 
 /** API base URL — resolved from environment */
-export const API_BASE_URL =
-  typeof window !== 'undefined'
-    ? (process.env.NEXT_PUBLIC_API_URL ?? '/api')
-    : (process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8080/api');
+export const API_BASE_URL = (() => {
+  const envUrl = process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL;
+  
+  if (envUrl) {
+    // Ensure it ends with /api if not already present
+    return envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
+  }
+  
+  // Fallback for development
+  return typeof window !== 'undefined' ? '/api' : 'http://localhost:8080/api';
+})();
 
 /** WebSocket URL */
-export const WS_URL =
-  process.env.NEXT_PUBLIC_WS_URL ?? 'ws://localhost:8080/ws';
+export const WS_URL = (() => {
+  const envWs = process.env.NEXT_PUBLIC_WS_URL;
+  if (envWs) return envWs;
+
+  const envUrl = process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL;
+  if (envUrl) {
+    // Derive ws:// or wss:// from http:// or https://
+    const wsBase = envUrl.replace(/^http/, 'ws').replace(/\/api$/, '');
+    return `${wsBase.replace(/\/$/, '')}/ws`;
+  }
+
+  return 'ws://localhost:8080/ws';
+})();
 
 /** Application name */
 export const APP_NAME = 'Tawsila';
