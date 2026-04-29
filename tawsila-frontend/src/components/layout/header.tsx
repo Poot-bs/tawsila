@@ -47,8 +47,8 @@ export function Header() {
       className={cn(
         'fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-in-out',
         isSolid
-          ? 'bg-[var(--surface)]/90 backdrop-blur-xl border-b border-[var(--border)] shadow-sm py-3'
-          : 'bg-transparent border-transparent py-5'
+          ? 'bg-[var(--surface)]/90 backdrop-blur-xl border-b border-[var(--border)] shadow-sm py-2 sm:py-3'
+          : 'bg-transparent border-transparent py-3 sm:py-5'
       )}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -79,7 +79,7 @@ export function Header() {
               </div>
               <span
                 className={cn(
-                  'text-2xl font-extrabold tracking-tight transition-colors duration-300',
+                  'text-xl sm:text-2xl font-extrabold tracking-tight transition-colors duration-300',
                   isSolid ? 'text-[#022B3A]' : 'text-[var(--text)] lg:text-white'
                 )}
               >
@@ -125,7 +125,8 @@ export function Header() {
             )}
           </nav>
 
-          <div className="flex-1 flex items-center justify-end gap-3">
+          {/* Secondary Actions (Language, Theme, Auth) - Desktop Only */}
+          <div className="hidden md:flex flex-1 items-center justify-end gap-3">
             <LanguageSwitcher />
             <ThemeToggle />
 
@@ -168,7 +169,10 @@ export function Header() {
             )}
           </div>
 
-          <MobileNav />
+          {/* Mobile Menu Button */}
+          <div className="flex md:hidden items-center justify-end flex-1">
+            <MobileNav />
+          </div>
         </div>
       </div>
     </motion.header>
