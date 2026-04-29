@@ -18,10 +18,8 @@ The backend is a Spring Boot application.
 1.  Click **New** -> **Web Service**.
 2.  Connect your GitHub repository.
 3.  **Name:** `tawsila-backend`.
-4.  **Runtime:** `Java`.
-5.  **Build Command:** `mvn clean package -DskipTests`.
-6.  **Start Command:** `java -jar target/*.jar`.
-7.  **Environment Variables:**
+4.  **Runtime:** Select **Docker** (This will use the `Dockerfile` in your root).
+5.  **Environment Variables:**
     *   `APP_PERSISTENCE_MODE`: `postgres`
     *   `POSTGRES_URL`: `jdbc:postgresql://dpg-d7ol9ubbc2fs73ca0vr0-a/tawsila_db` (Internal URL for Render)
     *   `POSTGRES_USER`: `tawsila_db_user`
