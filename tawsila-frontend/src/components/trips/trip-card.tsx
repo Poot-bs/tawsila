@@ -16,20 +16,19 @@ export function TripCard({ trip }: TripCardProps) {
   return (
     <div className="group bg-[var(--surface)] rounded-3xl border border-[var(--border)] shadow-[0_2px_10px_rgb(0,0,0,0.02)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-primary/20 transition-all duration-300 overflow-hidden flex flex-col h-full">
       <div className="p-6 flex-1 flex flex-col">
-        {/* Header: Locations & Price */}
-        <div className="flex justify-between items-start gap-4 mb-6">
+        <div className="flex flex-col xs:flex-row justify-between items-start gap-4 mb-6">
           <div className="space-y-1.5 min-w-0">
             <div className="flex flex-wrap items-center gap-2 text-[#022B3A]">
-              <span className="font-semibold text-xl tracking-tight break-words">{trip.depart}</span>
+              <span className="font-bold text-lg sm:text-xl tracking-tight break-words">{trip.depart}</span>
               <svg className="w-4 h-4 text-[#1F7A8C] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-              <span className="font-semibold text-xl tracking-tight break-words">{trip.arrivee}</span>
+              <span className="font-bold text-lg sm:text-xl tracking-tight break-words">{trip.arrivee}</span>
             </div>
-            <p className="text-sm font-medium text-[var(--text-muted)]">
+            <p className="text-xs sm:text-sm font-medium text-[var(--text-muted)]">
               {formatDate(trip.dateDepart)}
             </p>
           </div>
-          <div className="shrink-0 bg-[var(--surface-hover)] text-[#022B3A] py-1.5 px-3 rounded-xl border border-[var(--border)]">
-            <div className="text-lg font-bold tracking-tight">
+          <div className="shrink-0 bg-[var(--surface-hover)] text-[#022B3A] py-1.5 px-3 rounded-xl border border-[var(--border)] self-end xs:self-start">
+            <div className="text-base sm:text-lg font-bold tracking-tight">
               {formatCurrency(trip.prixParPlace)}
             </div>
           </div>

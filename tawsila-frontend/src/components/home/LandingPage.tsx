@@ -104,7 +104,7 @@ export default function LandingPage() {
 
           {/* Headline */}
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 drop-shadow-lg"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 drop-shadow-lg leading-[1.1]"
             variants={fadeUp}
           >
             {t('hero.title')}{' '}
@@ -114,7 +114,7 @@ export default function LandingPage() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl text-[#E1E5F2] mb-10 drop-shadow max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#E1E5F2] mb-10 drop-shadow max-w-2xl mx-auto leading-relaxed px-4"
             variants={fadeUp}
           >
             {t('hero.subtitle')}

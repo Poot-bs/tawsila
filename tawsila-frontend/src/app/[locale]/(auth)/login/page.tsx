@@ -38,7 +38,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto p-8 sm:p-10 bg-white dark:bg-[#0B1F2A] border border-gray-200 dark:border-white/10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+    <div className="w-full max-w-[min(400px,95vw)] mx-auto p-6 sm:p-10 bg-white dark:bg-[#0B1F2A] border border-gray-200 dark:border-white/10 rounded-[2rem] sm:rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
       <div className="mb-10 text-center">
         <h1 className="text-2xl font-semibold text-gray-900 dark:text-white tracking-tight">Bon retour</h1>
         <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Connectez-vous à votre compte Tawsila</p>
