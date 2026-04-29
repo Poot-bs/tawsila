@@ -6,6 +6,7 @@ import { mapsApi } from '@/lib/api/maps.api';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useTranslations } from 'next-intl';
+import { cn } from '@/lib/utils/cn';
 
 export interface FilterValues {
   depart: string;
@@ -216,7 +217,5 @@ export function TripFilters({ onSearch }: TripFiltersProps) {
         </div>
       </form>
     </div>
-  );
-}
   );
 }
