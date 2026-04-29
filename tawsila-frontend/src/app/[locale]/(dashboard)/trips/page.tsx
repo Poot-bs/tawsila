@@ -57,7 +57,7 @@ export default function TripsPage() {
               Rechercher un trajet
             </h1>
             <p className="mt-4 text-lg text-[#E1E5F2]">
-              Filtrez par ville, date et budget pour trouver la route parfaite pour votre campus.
+              Filtrez par ville, date et budget pour trouver la route parfaite pour votre voyage.
             </p>
           </div>
         </section>

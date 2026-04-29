@@ -138,7 +138,7 @@ export default function CreateTripPage() {
               Publier un trajet
             </h1>
             <p className="mt-4 text-lg text-[#E1E5F2]">
-              Proposez un nouveau trajet et partagez les frais avec des passagers universitaires.
+              Proposez un nouveau trajet et partagez les frais avec d'autres passagers.
             </p>
           </div>
         </motion.section>

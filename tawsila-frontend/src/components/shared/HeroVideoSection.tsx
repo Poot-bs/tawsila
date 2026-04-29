@@ -140,8 +140,8 @@ export function HeroVideoSection({
     >
       {/* ─── Screen-reader-only description ─── */}
       <p className="sr-only">
-        Tawsila university carpooling platform — cinematic background showing
-        connected mobility paths across a campus landscape.
+        Tawsila carpooling platform — cinematic background showing
+        connected mobility paths across a scenic landscape.
       </p>
 
       {/* ─── Video Layer (Desktop) ─── */}

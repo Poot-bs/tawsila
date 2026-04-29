@@ -45,7 +45,7 @@ export default function RegisterPage() {
     <div className="w-full max-w-md mx-auto p-8 sm:p-10 bg-white dark:bg-[#0B1F2A] border border-gray-200 dark:border-white/10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
       <div className="mb-10 text-center">
         <h1 className="text-2xl font-semibold text-gray-900 dark:text-white tracking-tight">Inscription</h1>
-        <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Créez votre compte UniRide</p>
+        <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Créez votre compte Tawsila</p>
       </div>
 
       {error && (
@@ -57,17 +57,17 @@ export default function RegisterPage() {
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-1.5">
           <label htmlFor="reg-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Nom Complet</label>
-          <Input id="reg-name" type="text" value={nom} onChange={(e) => setNom(e.target.value)} required placeholder="John Doe" className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-white focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4" />
+          <Input id="reg-name" type="text" value={nom} onChange={(e) => setNom(e.target.value)} required placeholder="John Doe" className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4" />
         </div>
 
         <div className="space-y-1.5">
           <label htmlFor="reg-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Adresse email</label>
-          <Input id="reg-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="etudiant@issat.tn" className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-white focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4" />
+          <Input id="reg-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="votre@email.com" className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4" />
         </div>
 
         <div className="space-y-1.5">
           <label htmlFor="reg-password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Mot de passe</label>
-          <Input id="reg-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="••••••••" className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-white focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4" />
+          <Input id="reg-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="••••••••" className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4" />
         </div>
 
         <div className="space-y-2.5">

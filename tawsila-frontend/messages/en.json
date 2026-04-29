@@ -46,17 +46,17 @@
     "saving": "Saving..."
   },
   "hero": {
-    "badge": "University Carpooling Platform",
+    "badge": "Carpooling Platform in Tunisia",
     "title": "Travel further,",
     "titleHighlight": "together.",
-    "subtitle": "Tawsila connects students and drivers for safe shared rides. Book your seat, manage your trips, and pay online.",
+    "subtitle": "Tawsila connects travelers and drivers for safe shared rides. Book your seat, manage your trips, and pay online.",
     "ctaPrimary": "Find a ride",
     "ctaSecondary": "Offer a ride",
-    "trustedBy": "Trusted by Tunisian universities"
+    "trustedBy": "Trusted across Tunisia"
   },
   "features": {
     "sectionTitle": "Everything you need",
-    "sectionSubtitle": "A complete platform to simplify your university commute",
+    "sectionSubtitle": "A complete platform to simplify all your commutes",
     "smartMatch": {
       "title": "Smart matching",
       "description": "Our algorithm finds the best rides matching your schedule and location."
@@ -111,11 +111,11 @@
   },
   "cta": {
     "title": "Ready to share the road?",
-    "subtitle": "Join thousands of students saving on their daily commute.",
+    "subtitle": "Join thousands of people saving on their daily commute.",
     "button": "Get started"
   },
   "footer": {
-    "tagline": "The carpooling platform for Tunisian students.",
+    "tagline": "The carpooling platform for all Tunisiens.",
     "platform": "Platform",
     "legal": "Legal",
     "contact": "Contact",
@@ -145,7 +145,7 @@
     "install": "Install app"
   },
   "meta": {
-    "homeTitle": "Tawsila — University Carpooling in Tunisia",
-    "homeDescription": "Carpooling platform for Tunisian students. Find or offer rides, pay online, and travel safely."
+    "homeTitle": "Tawsila — Carpooling in Tunisia",
+    "homeDescription": "Carpooling platform in Tunisia. Find or offer rides, pay online, and travel safely."
   }
 }

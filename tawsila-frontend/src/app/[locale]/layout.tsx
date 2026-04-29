@@ -29,8 +29,8 @@ export default async function LocaleLayout({ children, params }: Props) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Tawsila — Plateforme de covoiturage universitaire en Tunisie. Trouvez ou proposez des trajets, payez en ligne et voyagez en toute sécurité." />
-        <title>Tawsila — Covoiturage Universitaire</title>
+        <meta name="description" content="Tawsila - Plateforme de covoiturage en Tunisie. Trouvez ou proposez des trajets, payez en ligne et voyagez en toute sécurité." />
+        <title>Tawsila - Covoiturage en Tunisie</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="min-h-screen antialiased">

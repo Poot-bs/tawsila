@@ -41,7 +41,7 @@ export default function LoginPage() {
     <div className="w-full max-w-md mx-auto p-8 sm:p-10 bg-white dark:bg-[#0B1F2A] border border-gray-200 dark:border-white/10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
       <div className="mb-10 text-center">
         <h1 className="text-2xl font-semibold text-gray-900 dark:text-white tracking-tight">Bon retour</h1>
-        <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Connectez-vous à votre compte UniRide</p>
+        <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Connectez-vous à votre compte Tawsila</p>
       </div>
 
       {error && (
@@ -59,8 +59,8 @@ export default function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            placeholder="etudiant@issat.tn"
-            className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-white focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4"
+            placeholder="votre@email.com"
+            className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4"
           />
         </div>
 
@@ -76,7 +76,7 @@ export default function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             required
             placeholder="••••••••"
-            className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-white focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4"
+            className="w-full h-12 bg-gray-50/50 dark:bg-white/5 border-gray-200 dark:border-white/10 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[#1F7A8C]/20 focus:border-[#1F7A8C] rounded-xl transition-all px-4"
           />
         </div>
 

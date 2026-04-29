@@ -89,19 +89,19 @@
 
 /* Dark mode */
 .dark {
-  --surface: #022B3A;
-  --surface-hover: #044359;
-  --surface-elevated: #033547;
-  --bg: #01141C;
-  --bg-subtle: #022B3A;
+  --surface: #041219;
+  --surface-hover: #0B1F2A;
+  --surface-elevated: #0B1F2A;
+  --bg: #01080B;
+  --bg-subtle: #041219;
 
-  --text: #E1E5F2;
-  --text-muted: #8AA4B0;
+  --text: #F8FAFC;
+  --text-muted: #94A3B8;
   --text-inverse: #022B3A;
 
-  --border: #044359;
-  --border-hover: #1F7A8C;
-  --ring: #BFDBF780;
+  --border: #1E293B;
+  --border-hover: #334155;
+  --ring: #1F7A8C;
 
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
@@ -112,19 +112,19 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
-    --surface: #022B3A;
-    --surface-hover: #044359;
-    --surface-elevated: #033547;
-    --bg: #01141C;
-    --bg-subtle: #022B3A;
+    --surface: #041219;
+    --surface-hover: #0B1F2A;
+    --surface-elevated: #0B1F2A;
+    --bg: #01080B;
+    --bg-subtle: #041219;
 
-    --text: #E1E5F2;
-    --text-muted: #8AA4B0;
+    --text: #F8FAFC;
+    --text-muted: #94A3B8;
     --text-inverse: #022B3A;
 
-    --border: #044359;
-    --border-hover: #1F7A8C;
-    --ring: #BFDBF780;
+    --border: #1E293B;
+    --border-hover: #334155;
+    --ring: #1F7A8C;
 
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);

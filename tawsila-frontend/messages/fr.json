@@ -46,17 +46,17 @@
     "saving": "Enregistrement..."
   },
   "hero": {
-    "badge": "Plateforme de Covoiturage Universitaire",
+    "badge": "Plateforme de Covoiturage en Tunisie",
     "title": "Voyagez plus loin,",
     "titleHighlight": "ensemble.",
-    "subtitle": "Tawsila connecte les étudiants et chauffeurs pour des trajets partagés sécurisés. Réservez votre place, gérez vos trajets et payez directement en ligne.",
+    "subtitle": "Tawsila connecte les voyageurs et chauffeurs pour des trajets partagés sécurisés. Réservez votre place, gérez vos trajets et payez directement en ligne.",
     "ctaPrimary": "Trouver un trajet",
     "ctaSecondary": "Proposer un trajet",
-    "trustedBy": "Adopté par les universités tunisiennes"
+    "trustedBy": "Adopté partout en Tunisie"
   },
   "features": {
     "sectionTitle": "Tout ce dont vous avez besoin",
-    "sectionSubtitle": "Une plateforme complète pour simplifier vos déplacements universitaires",
+    "sectionSubtitle": "Une plateforme complète pour simplifier tous vos déplacements",
     "smartMatch": {
       "title": "Correspondances intelligentes",
       "description": "Notre algorithme trouve les trajets les plus adaptés à vos horaires et votre localisation."
@@ -111,11 +111,11 @@
   },
   "cta": {
     "title": "Prêt à partager la route ?",
-    "subtitle": "Rejoignez des milliers d'étudiants qui économisent chaque jour sur leurs trajets.",
+    "subtitle": "Rejoignez des milliers d'utilisateurs qui économisent chaque jour sur leurs trajets.",
     "button": "Commencer maintenant"
   },
   "footer": {
-    "tagline": "La plateforme de covoiturage pour les étudiants tunisiens.",
+    "tagline": "La plateforme de covoiturage pour tous les Tunisiens.",
     "platform": "Plateforme",
     "legal": "Légal",
     "contact": "Contact",
@@ -145,7 +145,7 @@
     "install": "Installer l'app"
   },
   "meta": {
-    "homeTitle": "Tawsila — Covoiturage Universitaire en Tunisie",
-    "homeDescription": "Plateforme de covoiturage pour les étudiants tunisiens. Trouvez ou proposez des trajets, payez en ligne et voyagez en toute sécurité."
+    "homeTitle": "Tawsila — Covoiturage en Tunisie",
+    "homeDescription": "Plateforme de covoiturage en Tunisie. Trouvez ou proposez des trajets, payez en ligne et voyagez en toute sécurité."
   }
 }

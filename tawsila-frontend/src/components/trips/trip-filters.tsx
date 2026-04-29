@@ -72,7 +72,7 @@ export function TripFilters({ onSearch }: TripFiltersProps) {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1F7A8C]">Filtres</p>
           <h2 className="text-2xl font-extrabold text-[#022B3A] mt-2 font-display">Affiner la recherche</h2>
         </div>
-        <span className="text-xs font-semibold text-[#1F7A8C] bg-[#E1E5F2] px-3 py-1 rounded-full">Campus rides</span>
+        <span className="text-xs font-semibold text-[#1F7A8C] bg-[#E1E5F2] px-3 py-1 rounded-full">Shared rides</span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 mb-4">

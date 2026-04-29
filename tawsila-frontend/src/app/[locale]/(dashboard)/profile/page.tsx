@@ -126,11 +126,11 @@ export default function ProfilePage() {
                     <Input value={profile?.name || ''} readOnly className="bg-[var(--surface-hover)] border-[var(--border)]" />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-[var(--text-muted)] mb-1">Email universitaire</label>
+                    <label className="block text-sm font-bold text-[var(--text-muted)] mb-1">Email</label>
                     <Input value={profile?.email || ''} readOnly className="bg-[var(--surface-hover)] border-[var(--border)]" />
                   </div>
                   <p className="text-xs text-[var(--text-muted)] mt-2">
-                    * Pour modifier vos informations, veuillez contacter l'administration de l'universite.
+                    * Pour modifier vos informations, veuillez contacter l'administration.
                   </p>
                 </div>
               )}

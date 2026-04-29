@@ -55,7 +55,6 @@ export default function AuthLayout({
             </span>
           </div>
           <p className="text-white/70 text-center text-lg max-w-md leading-relaxed drop-shadow">
-            La plateforme de covoiturage universitaire pour les étudiants tunisiens.
           </p>
         </div>
       </div>
