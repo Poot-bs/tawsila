@@ -50,16 +50,16 @@ export default function ChatRoomsPage() {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative overflow-hidden rounded-[2.5rem] bg-[#0B1F2A] text-white px-6 py-10 sm:px-10 sm:py-12 shadow-2xl"
+          className="relative overflow-hidden rounded-[2.5rem] bg-secondary text-white px-8 py-12 sm:px-12 sm:py-16 shadow-2xl"
         >
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,#0B1F2A_30%,#123A47_75%,#1F7A8C_120%)] opacity-90" />
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,var(--color-secondary)_30%,var(--color-secondary-light)_75%,var(--color-primary)_120%)] opacity-95" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(191,219,247,0.2),transparent_55%)]" />
           <div className="relative z-10 max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#BFDBF7]">Messagerie</p>
-            <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight font-display">
+            <p className="text-xs font-black uppercase tracking-[0.4em] text-accent/80 mb-3">Messagerie</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter font-display leading-tight">
               Mes Discussions
             </h1>
-            <p className="mt-4 text-lg text-[#E1E5F2]">
+            <p className="mt-6 text-lg text-accent/90 font-medium leading-relaxed">
               Retrouvez ici tous les chats liés à vos trajets en cours.
             </p>
           </div>

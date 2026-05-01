@@ -52,23 +52,23 @@ export function ReviewSubmissionModal({
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl relative"
+          className="bg-[var(--surface)] rounded-[2.5rem] p-8 sm:p-10 w-full max-w-md shadow-2xl relative border border-[var(--border)]"
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition-colors"
+            className="absolute top-6 right-6 p-2 text-[var(--text-muted)] hover:text-[var(--text)] rounded-full hover:bg-[var(--surface-hover)] transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
 
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold text-[#022B3A] mb-2">Évaluer votre trajet</h2>
-            <p className="text-gray-500 text-sm">
-              Comment s'est passé votre voyage avec <span className="font-bold text-[#1F7A8C]">{driverName}</span> ?
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-black text-[var(--text)] mb-3 tracking-tight">Évaluer votre trajet</h2>
+            <p className="text-[var(--text-muted)] text-base">
+              Comment s'est passé votre voyage avec <span className="font-bold text-primary">{driverName}</span> ?
             </p>
           </div>
 
-          <div className="flex justify-center gap-2 mb-6">
+          <div className="flex justify-center gap-3 mb-8">
             {[1, 2, 3, 4, 5].map((star) => (
               <button
                 key={star}
@@ -76,11 +76,11 @@ export function ReviewSubmissionModal({
                 onMouseEnter={() => setHoverStars(star)}
                 onMouseLeave={() => setHoverStars(0)}
                 onClick={() => setStars(star)}
-                className="focus:outline-none transition-transform hover:scale-110"
+                className="focus:outline-none transition-transform hover:scale-125 active:scale-95"
               >
                 <svg
-                  className={`w-10 h-10 transition-colors ${
-                    (hoverStars || stars) >= star ? 'fill-amber-400 text-amber-400' : 'fill-transparent text-gray-300'
+                  className={`w-12 h-12 transition-colors ${
+                    (hoverStars || stars) >= star ? 'fill-amber-400 text-amber-400' : 'fill-transparent text-[var(--border)]'
                   }`}
                   stroke="currentColor"
                   strokeWidth="1.5"
@@ -92,28 +92,28 @@ export function ReviewSubmissionModal({
             ))}
           </div>
 
-          <div className="mb-6">
-            <label className="block text-sm font-bold text-gray-700 mb-2">
-              Commentaire <span className="text-gray-400 font-normal">(optionnel)</span>
+          <div className="mb-8">
+            <label className="block text-sm font-bold text-[var(--text)] mb-2 uppercase tracking-wide">
+              Commentaire <span className="text-[var(--text-muted)] font-normal">(optionnel)</span>
             </label>
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="Partagez votre expérience..."
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:border-[#1F7A8C] focus:ring-1 focus:ring-[#1F7A8C] outline-none min-h-[100px] resize-none"
+              className="w-full bg-[var(--surface-hover)] border border-[var(--border)] rounded-2xl p-4 text-base text-[var(--text)] focus:border-primary focus:ring-1 focus:ring-primary outline-none min-h-[120px] resize-none transition-all"
             />
           </div>
 
           <Button
             onClick={() => submitMutation.mutate()}
             disabled={stars === 0 || submitMutation.isPending}
-            className="w-full bg-[#1F7A8C] hover:bg-[#022B3A] text-white font-bold h-12 rounded-xl transition-colors"
+            className="w-full bg-primary hover:bg-primary-dark text-white font-bold h-14 rounded-2xl transition-all shadow-lg shadow-primary/20"
           >
             {submitMutation.isPending ? 'Envoi en cours...' : 'Envoyer mon avis'}
           </Button>
 
           {submitMutation.isError && (
-            <p className="mt-3 text-sm text-red-500 text-center font-medium">
+            <p className="mt-4 text-sm text-red-500 text-center font-bold">
               Une erreur est survenue. Veuillez réessayer.
             </p>
           )}

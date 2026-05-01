@@ -8,8 +8,12 @@ export default function AuthLayout({
   return (
     <div className="flex min-h-screen">
       {/* Left: Form panel */}
-      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:w-1/2 xl:w-5/12 bg-[var(--surface)] relative z-10">
-        <div className="mx-auto w-full max-w-sm lg:max-w-md">
+      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:w-1/2 xl:w-5/12 bg-[var(--surface)] relative z-10 overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle_at_center,rgba(31,122,140,0.15),transparent_70%)] blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle_at_center,rgba(2,43,58,0.1),transparent_70%)] blur-3xl pointer-events-none" />
+        
+        <div className="mx-auto w-full max-w-sm lg:max-w-md relative z-10">
           {children}
         </div>
       </div>

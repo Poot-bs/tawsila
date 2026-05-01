@@ -42,7 +42,7 @@ export function MobileNav() {
         type="button"
         className="md:hidden relative z-[60] flex flex-col items-center justify-center w-11 h-11 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-hover)] transition-colors focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        aria-label={isOpen ? t('closeMenu') : t('openMenu')}
       >
         <div className="w-5 flex flex-col gap-1.5">
           <span className={cn('h-0.5 bg-[var(--text)] transition-all duration-300 origin-right', isOpen ? 'w-5 -rotate-45 -translate-y-px' : 'w-5')} />
@@ -99,7 +99,7 @@ export function MobileNav() {
 
               <div className="p-6 border-t border-[var(--border)] bg-[var(--surface-hover)]/30">
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-sm font-bold text-[var(--text)] uppercase tracking-wider">Preferences</p>
+                  <p className="text-sm font-bold text-[var(--text)] uppercase tracking-wider">{t('preferences')}</p>
                   <div className="flex items-center gap-2">
                     <LanguageSwitcher />
                     <ThemeToggle />

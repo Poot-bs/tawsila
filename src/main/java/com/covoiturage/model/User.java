@@ -16,17 +16,21 @@ import java.util.UUID;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "identifiant")
 public abstract class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     private static final int MAX_FAILED_ATTEMPTS = 3;
-
-    protected final String identifiant;
-    protected final UserRole role;
+    protected String identifiant;
+    protected UserRole role;
     protected String nom;
     private String email;
     @JsonIgnore
     private String passwordHash;
     private UserStatus status;
     private int tentativesEchouees;
-    private final List<Notification> notifications;
+    private List<Notification> notifications;
+
+    protected User() {
+        this.notifications = new ArrayList<>();
+    }
 
     protected User(String identifiant, String nom, String email, String password, UserRole role) {
         this.identifiant = identifiant;

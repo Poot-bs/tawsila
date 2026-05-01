@@ -7,7 +7,10 @@ import { Link } from '@/i18n/navigation';
 import { SystemHealthWidget } from '@/components/admin/system-health-widget';
 import { motion } from 'framer-motion';
 
+import { useTranslations } from 'next-intl';
+
 export default function AdminDashboardPage() {
+  const t = useTranslations('admin');
   const { user } = useAuthStore();
 
   const { data: dashboard, isLoading } = useQuery({
@@ -19,7 +22,7 @@ export default function AdminDashboardPage() {
   if (user?.role !== 'ADMIN') {
     return (
       <div className="p-8 text-center text-red-500 font-bold">
-        Accès refusé. Vous devez être administrateur.
+        {t('accessDenied')}
       </div>
     );
   }
@@ -33,26 +36,26 @@ export default function AdminDashboardPage() {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative overflow-hidden rounded-[2.5rem] bg-[#0B1F2A] text-white px-6 py-10 sm:px-10 sm:py-12 shadow-2xl"
+          className="relative overflow-hidden rounded-[2.5rem] bg-secondary text-white px-6 py-12 sm:px-12 sm:py-16 shadow-2xl"
         >
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,#0B1F2A_30%,#123A47_75%,#1F7A8C_120%)] opacity-90" />
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,var(--color-secondary)_30%,var(--color-secondary-light)_75%,var(--color-primary)_120%)] opacity-90" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(191,219,247,0.2),transparent_55%)]" />
-          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#BFDBF7]">Administration</p>
-              <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight font-display">
-                Panneau d'administration
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="max-w-2xl">
+              <p className="text-xs font-black uppercase tracking-[0.4em] text-accent/80 mb-3">{t('administration')}</p>
+              <h1 className="text-4xl sm:text-6xl font-black tracking-tight font-display leading-[1.1]">
+                {t('dashboardTitle')}
               </h1>
-              <p className="mt-4 text-lg text-[#E1E5F2]">
-                Supervisez l'activité de la plateforme Tawsila.
+              <p className="mt-6 text-lg sm:text-xl text-accent/90 font-medium leading-relaxed">
+                {t('dashboardSubtitle')}
               </p>
             </div>
-            <div className="flex gap-3 shrink-0">
-              <Link href="/admin/users" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold px-5 py-2.5 rounded-xl transition-colors backdrop-blur-sm">
-                Gérer les utilisateurs
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+              <Link href="/admin/users" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-black px-8 py-4 rounded-2xl transition-all backdrop-blur-md text-center">
+                {t('manageUsers')}
               </Link>
-              <Link href="/admin/trips" className="bg-[#1F7A8C] hover:bg-[#155866] text-white font-bold px-5 py-2.5 rounded-xl transition-colors shadow-lg shadow-[#1F7A8C]/30">
-                Superviser les trajets
+              <Link href="/admin/trips" className="bg-primary hover:bg-primary-dark text-white font-black px-8 py-4 rounded-2xl transition-all shadow-xl shadow-primary/30 text-center">
+                {t('superviseTrips')}
               </Link>
             </div>
           </div>
@@ -61,46 +64,48 @@ export default function AdminDashboardPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="col-span-1 lg:col-span-2 space-y-8">
             {/* Key Metrics */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4"
-            >
-              <MetricCard title="Utilisateurs" value={dashboard?.users} isLoading={isLoading} />
-              <MetricCard title="Trajets (Total)" value={dashboard?.trips} isLoading={isLoading} />
-              <MetricCard title="Chauffeurs" value={dashboard?.chauffeurs} isLoading={isLoading} />
-              <MetricCard title="Passagers" value={dashboard?.passagers} isLoading={isLoading} />
-            </motion.div>
+            <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4"
+              >
+                <MetricCard title={t('users')} value={dashboard?.users} isLoading={isLoading} />
+                <MetricCard title={t('tripsTotal')} value={dashboard?.trips} isLoading={isLoading} />
+                <MetricCard title={t('drivers')} value={dashboard?.chauffeurs} isLoading={isLoading} />
+                <MetricCard title={t('passengers')} value={dashboard?.passagers} isLoading={isLoading} />
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 }}
-              className="grid grid-cols-2 md:grid-cols-3 gap-4"
-            >
-              <MetricCard title="Actifs" value={dashboard?.activeUsers} isLoading={isLoading} color="green" />
-              <MetricCard title="Suspendus" value={dashboard?.suspendedUsers} isLoading={isLoading} color="yellow" />
-              <MetricCard title="Bloqués" value={dashboard?.blockedUsers} isLoading={isLoading} color="red" />
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 }}
+                className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+              >
+                <MetricCard title={t('active')} value={dashboard?.activeUsers} isLoading={isLoading} color="green" />
+                <MetricCard title={t('suspended')} value={dashboard?.suspendedUsers} isLoading={isLoading} color="yellow" />
+                <MetricCard title={t('blocked')} value={dashboard?.blockedUsers} isLoading={isLoading} color="red" />
+              </motion.div>
+            </div>
 
             {/* Charts */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-[var(--surface)] p-6 rounded-3xl border border-[var(--border)] shadow-sm"
+              className="bg-[var(--surface)] p-8 sm:p-10 rounded-[2.5rem] border border-[var(--border)] shadow-sm"
             >
-              <h2 className="text-xl font-bold text-[var(--text)] mb-6">Activité récente (Aperçu)</h2>
-              <div className="h-64 flex items-end gap-2">
+              <h2 className="text-2xl font-black text-[var(--text)] mb-10 font-display tracking-tight">{t('recentActivity')}</h2>
+              <div className="h-72 flex items-end gap-3 sm:gap-4">
                 {[40, 65, 45, 80, 55, 90, 75].map((height, i) => (
-                  <div key={i} className="flex-1 flex flex-col justify-end items-center gap-2 group">
-                    <div className="w-full bg-accent/50 group-hover:bg-primary rounded-t-lg transition-colors relative" style={{ height: `${height}%` }}>
-                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-secondary text-white text-xs font-bold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div key={i} className="flex-1 flex flex-col justify-end items-center gap-4 group">
+                    <div className="w-full bg-primary/10 group-hover:bg-primary rounded-2xl transition-all duration-500 relative cursor-pointer" style={{ height: `${height}%` }}>
+                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-secondary text-white text-[10px] font-black py-2 px-3 rounded-xl opacity-0 group-hover:opacity-100 transition-all scale-75 group-hover:scale-100 shadow-xl">
                         {height}
                       </div>
                     </div>
-                    <span className="text-xs font-medium text-[var(--text-muted)]">J-{6 - i}</span>
+                    <span className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest">{t('day')}-{6 - i}</span>
                   </div>
                 ))}
               </div>
@@ -124,18 +129,18 @@ export default function AdminDashboardPage() {
 function MetricCard({ title, value, isLoading, color = 'blue' }: { title: string, value?: number | string | unknown, isLoading: boolean, color?: 'blue' | 'green' | 'yellow' | 'red' }) {
   const colorStyles = {
     blue: 'bg-[var(--surface)] border-[var(--border)] text-[var(--text)]',
-    green: 'bg-green-50 dark:bg-green-900/20 border-green-100 dark:border-green-800 text-green-800 dark:text-green-300',
-    yellow: 'bg-amber-50 dark:bg-amber-900/20 border-amber-100 dark:border-amber-800 text-amber-800 dark:text-amber-300',
-    red: 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800 text-red-800 dark:text-red-300',
+    green: 'bg-green-500/5 dark:bg-green-500/10 border-green-500/10 dark:border-green-500/20 text-green-700 dark:text-green-400',
+    yellow: 'bg-amber-500/5 dark:bg-amber-500/10 border-amber-500/10 dark:border-amber-500/20 text-amber-700 dark:text-amber-400',
+    red: 'bg-red-500/5 dark:bg-red-500/10 border-red-500/10 dark:border-red-500/20 text-red-700 dark:text-red-400',
   };
 
   return (
-    <div className={`p-6 rounded-3xl border shadow-sm flex flex-col justify-between ${colorStyles[color]}`}>
-      <h3 className="text-sm font-bold opacity-75 mb-2">{title}</h3>
+    <div className={`p-8 rounded-[2rem] border shadow-sm flex flex-col justify-between transition-all hover:scale-[1.02] ${colorStyles[color]}`}>
+      <h3 className="text-[10px] font-black uppercase tracking-[0.2em] opacity-70 mb-4">{title}</h3>
       {isLoading ? (
-        <div className="h-8 w-16 bg-[var(--surface-hover)] animate-pulse rounded-lg" />
+        <div className="h-10 w-20 bg-[var(--surface-hover)] animate-pulse rounded-xl" />
       ) : (
-        <p className="text-3xl font-black">{String(value ?? 0)}</p>
+        <p className="text-4xl font-black tracking-tighter">{String(value ?? 0)}</p>
       )}
     </div>
   );

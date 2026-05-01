@@ -6,9 +6,18 @@ import java.util.List;
 import java.util.Objects;
 
 public class Chauffeur extends User {
-    private final List<Trajet> trajetsProposes;
-    private final List<Vehicule> vehicules;
-    private final List<Integer> notes;
+    private static final long serialVersionUID = 1L;
+    private List<Trajet> trajetsProposes;
+    private List<Vehicule> vehicules;
+    private List<Integer> notes;
+
+    public Chauffeur() {
+        super();
+        this.role = UserRole.CHAUFFEUR;
+        this.trajetsProposes = new ArrayList<>();
+        this.vehicules = new ArrayList<>();
+        this.notes = new ArrayList<>();
+    }
 
     public Chauffeur(String identifiant, String nom, String email, String password) {
         super(identifiant, nom, email, password, UserRole.CHAUFFEUR);

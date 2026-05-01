@@ -22,7 +22,7 @@ interface TripFiltersProps {
 }
 
 export function TripFilters({ onSearch }: TripFiltersProps) {
-  const t = useTranslations();
+  const t = useTranslations('trips');
   const [isExpanded, setIsExpanded] = useState(false);
   
   const [filters, setFilters] = useState<FilterValues>({
@@ -34,23 +34,6 @@ export function TripFilters({ onSearch }: TripFiltersProps) {
     minRating: '0',
   });
 
-  const [departSearch, setDepartSearch] = useState('');
-  const [arriveeSearch, setArriveeSearch] = useState('');
-
-  // Geocoding queries
-  const { data: departSuggestions } = useQuery({
-    queryKey: ['geocode', departSearch],
-    queryFn: () => mapsApi.geocode(departSearch),
-    enabled: departSearch.length > 2,
-    staleTime: 60000,
-  });
-
-  const { data: arriveeSuggestions } = useQuery({
-    queryKey: ['geocode', arriveeSearch],
-    queryFn: () => mapsApi.geocode(arriveeSearch),
-    enabled: arriveeSearch.length > 2,
-    staleTime: 60000,
-  });
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,163 +41,133 @@ export function TripFilters({ onSearch }: TripFiltersProps) {
     if (window.innerWidth < 1024) setIsExpanded(false);
   };
 
-  const handleSelectDepart = (address: string) => {
-    setFilters(prev => ({ ...prev, depart: address }));
-    setDepartSearch('');
-  };
-
-  const handleSelectArrivee = (address: string) => {
-    setFilters(prev => ({ ...prev, arrivee: address }));
-    setArriveeSearch('');
-  };
-
   return (
-    <div className="lg:sticky lg:top-24">
-      <div className="lg:hidden mb-4">
+    <div className="lg:sticky lg:top-24 font-body">
+      <div className="lg:hidden mb-6">
         <Button 
           onClick={() => setIsExpanded(!isExpanded)}
           variant="outline" 
-          className="w-full flex items-center justify-between h-12 rounded-2xl border-primary/20 bg-white/80 backdrop-blur"
+          className="w-full flex items-center justify-between h-14 rounded-2xl border-[var(--border)] bg-[var(--surface)] shadow-lg active:scale-[0.98] transition-all"
         >
-          <span className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
-            <span className="font-bold text-primary">Filtres de recherche</span>
+          <span className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+              <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
+            </div>
+            <span className="font-black text-primary uppercase tracking-widest text-xs">{t('filters')}</span>
           </span>
-          <svg className={cn("w-5 h-5 transition-transform", isExpanded ? "rotate-180" : "")} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+          <svg className={cn("w-5 h-5 transition-transform text-[var(--text-muted)]", isExpanded ? "rotate-180" : "")} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
         </Button>
       </div>
 
       <form 
         onSubmit={handleSearch} 
         className={cn(
-          "bg-white/90 border border-[#E1E5F2] rounded-3xl p-6 shadow-xl shadow-[#022B3A]/5 backdrop-blur transition-all duration-300",
+          "bg-[var(--surface)] border border-[var(--border)] rounded-[2.5rem] p-8 shadow-2xl shadow-primary/5 backdrop-blur-xl transition-all duration-500",
           !isExpanded ? "hidden lg:block" : "block animate-fade-up"
         )}
       >
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex items-start justify-between mb-8 pb-6 border-b border-[var(--border)]">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#1F7A8C]">Filtres</p>
-            <h2 className="text-2xl font-extrabold text-[#022B3A] mt-2 font-display">Affiner la recherche</h2>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-1">{t('filters')}</p>
+            <h2 className="text-2xl font-black text-[var(--text)] tracking-tighter font-display leading-none">{t('refineSearch')}</h2>
           </div>
-          <span className="text-xs font-semibold text-[#1F7A8C] bg-[#E1E5F2] px-3 py-1 rounded-full">Shared rides</span>
+          <span className="text-[10px] font-black text-primary bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20 uppercase tracking-widest">Shared</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 mb-4">
+        <div className="space-y-6 mb-8">
           {/* Depart */}
-          <div className="relative">
-            <label className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1">Depart</label>
-            <Input 
-              value={filters.depart} 
-              onChange={(e) => {
-                setFilters(prev => ({ ...prev, depart: e.target.value }));
-                setDepartSearch(e.target.value);
-              }} 
-              placeholder="Ville de départ"
-              className="w-full"
-            />
-            {departSuggestions && departSuggestions.length > 0 && departSearch && (
-              <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
-                {departSuggestions.map(s => (
-                  <div 
-                    key={s.label} 
-                    className="px-4 py-2 hover:bg-gray-50 cursor-pointer text-sm"
-                    onClick={() => handleSelectDepart(s.label)}
-                  >
-                    {s.label}
-                  </div>
-                ))}
+          <div className="space-y-2">
+            <label className="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-1">{t('depart')}</label>
+            <div className="relative group">
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] group-focus-within:text-primary transition-colors">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               </div>
-            )}
+              <Input 
+                value={filters.depart} 
+                onChange={(e) => setFilters(prev => ({ ...prev, depart: e.target.value }))} 
+                placeholder={t('depart')}
+                className="w-full h-12 pl-12 rounded-xl bg-[var(--surface-hover)]/50 border-[var(--border)] focus:bg-[var(--surface)] font-bold transition-all"
+              />
+            </div>
           </div>
 
           {/* Arrivee */}
-          <div className="relative">
-            <label className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1">Arrivee</label>
-            <Input 
-              value={filters.arrivee} 
-              onChange={(e) => {
-                setFilters(prev => ({ ...prev, arrivee: e.target.value }));
-                setArriveeSearch(e.target.value);
-              }} 
-              placeholder="Ville d'arrivée"
-              className="w-full"
-            />
-            {arriveeSuggestions && arriveeSuggestions.length > 0 && arriveeSearch && (
-              <div className="absolute z-20 w-full mt-1 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
-                {arriveeSuggestions.map(s => (
-                  <div 
-                    key={s.label} 
-                    className="px-4 py-2 hover:bg-gray-50 cursor-pointer text-sm"
-                    onClick={() => handleSelectArrivee(s.label)}
-                  >
-                    {s.label}
-                  </div>
-                ))}
+          <div className="space-y-2">
+            <label className="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-1">{t('arrivee')}</label>
+            <div className="relative group">
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] group-focus-within:text-primary transition-colors">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               </div>
-            )}
+              <Input 
+                value={filters.arrivee} 
+                onChange={(e) => setFilters(prev => ({ ...prev, arrivee: e.target.value }))} 
+                placeholder={t('arrivee')}
+                className="w-full h-12 pl-12 rounded-xl bg-[var(--surface-hover)]/50 border-[var(--border)] focus:bg-[var(--surface)] font-bold transition-all"
+              />
+            </div>
           </div>
 
-          {/* Date */}
-          <div>
-            <label className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1">Date</label>
-            <Input 
-              type="date"
-              value={filters.dateMin} 
-              onChange={(e) => setFilters(prev => ({ ...prev, dateMin: e.target.value }))} 
-              className="w-full"
-            />
+          <div className="grid grid-cols-2 gap-4">
+            {/* Date */}
+            <div className="space-y-2">
+              <label className="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-1">{t('date')}</label>
+              <Input 
+                type="date"
+                value={filters.dateMin} 
+                onChange={(e) => setFilters(prev => ({ ...prev, dateMin: e.target.value }))} 
+                className="w-full h-12 rounded-xl bg-[var(--surface-hover)]/50 border-[var(--border)] font-bold text-xs"
+              />
+            </div>
+
+            {/* Places */}
+            <div className="space-y-2">
+              <label className="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-1">{t('placesMin')}</label>
+              <Input 
+                type="number"
+                min="1"
+                max="8"
+                value={filters.seatsMin} 
+                onChange={(e) => setFilters(prev => ({ ...prev, seatsMin: e.target.value }))} 
+                className="w-full h-12 rounded-xl bg-[var(--surface-hover)]/50 border-[var(--border)] font-bold"
+              />
+            </div>
           </div>
 
-          {/* Places */}
-          <div>
-            <label className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1">Places min.</label>
-            <Input 
-              type="number"
-              min="1"
-              max="8"
-              value={filters.seatsMin} 
-              onChange={(e) => setFilters(prev => ({ ...prev, seatsMin: e.target.value }))} 
-              className="w-full"
-            />
+          <div className="grid grid-cols-2 gap-4">
+            {/* Budget */}
+            <div className="space-y-2">
+              <label className="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-1">{t('budgetMax')}</label>
+              <Input 
+                type="number"
+                step="0.5"
+                value={filters.prixMax} 
+                onChange={(e) => setFilters(prev => ({ ...prev, prixMax: e.target.value }))} 
+                placeholder="ex: 20"
+                className="w-full h-12 rounded-xl bg-[var(--surface-hover)]/50 border-[var(--border)] font-bold"
+              />
+            </div>
+
+            {/* Rating */}
+            <div className="space-y-2">
+              <label className="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest ml-1">{t('minRating')}</label>
+              <select
+                value={filters.minRating}
+                onChange={(e) => setFilters(prev => ({ ...prev, minRating: e.target.value }))}
+                className="w-full h-12 bg-[var(--surface-hover)]/50 border border-[var(--border)] rounded-xl px-4 py-2 text-xs font-black focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none cursor-pointer"
+              >
+                <option value="0">{t('allRatings')}</option>
+                <option value="3">3+ ★</option>
+                <option value="4">4+ ★</option>
+                <option value="4.5">4.5+ ★</option>
+              </select>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 mb-6">
-          {/* Budget */}
-          <div>
-            <label className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1">Budget max (TND)</label>
-            <Input 
-              type="number"
-              step="0.5"
-              value={filters.prixMax} 
-              onChange={(e) => setFilters(prev => ({ ...prev, prixMax: e.target.value }))} 
-              placeholder="ex: 20"
-              className="w-full"
-            />
-          </div>
-
-          {/* Rating */}
-          <div>
-            <label className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1">Note chauffeur (min)</label>
-            <select
-              value={filters.minRating}
-              onChange={(e) => setFilters(prev => ({ ...prev, minRating: e.target.value }))}
-              className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-xl px-4 py-2 text-sm font-semibold focus:border-primary focus:ring-1 focus:ring-primary outline-none"
-            >
-              <option value="0">Toutes les notes</option>
-              <option value="3">3+ Étoiles</option>
-              <option value="4">4+ Étoiles</option>
-              <option value="4.5">4.5+ Étoiles</option>
-            </select>
-          </div>
-
-          <div className="flex items-end">
-            <Button type="submit" className="w-full h-[48px] font-bold text-base">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-              Rechercher
-            </Button>
-          </div>
-        </div>
+        <Button type="submit" className="w-full h-14 rounded-2xl font-black text-sm uppercase tracking-[0.2em] shadow-xl shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all">
+          <svg className="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          {t('searchButton')}
+        </Button>
       </form>
     </div>
   );

@@ -8,11 +8,15 @@ import java.util.Objects;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Vehicule implements Serializable {
-    private final String id;
+    private static final long serialVersionUID = 1L;
+    private String id;
     private String marque;
     private String modele;
     private String immatriculation;
     private int capacite;
+
+    public Vehicule() {
+    }
 
     public Vehicule(String id, String marque, String modele, String immatriculation, int capacite) {
         this.id = id;

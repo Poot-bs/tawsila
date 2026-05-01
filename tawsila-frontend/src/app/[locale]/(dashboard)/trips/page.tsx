@@ -8,7 +8,10 @@ import { TripRecommendations } from '@/components/trips/trip-recommendations';
 import { TripCard } from '@/components/trips/trip-card';
 import { motion } from 'framer-motion';
 
+import { useTranslations } from 'next-intl';
+
 export default function TripsPage() {
+  const t = useTranslations('trips');
   const [filters, setFilters] = useState<FilterValues>({
     depart: '',
     arrivee: '',
@@ -19,26 +22,25 @@ export default function TripsPage() {
   });
 
   const { data: rawTrips, isLoading, error } = useQuery({
-    queryKey: ['trips', filters.depart, filters.arrivee, filters.dateMin, filters.prixMax],
-    queryFn: () => tripsApi.search({
-      depart: filters.depart || undefined,
-      arrivee: filters.arrivee || undefined,
-      dateMin: filters.dateMin ? new Date(filters.dateMin).toISOString() : undefined,
-      prixMax: filters.prixMax ? Number(filters.prixMax) : undefined,
-    }),
+    queryKey: ['trips', filters],
+    queryFn: () => {
+      console.log('Fetching trips with filters:', filters);
+      return tripsApi.search({
+        depart: filters.depart || undefined,
+        arrivee: filters.arrivee || undefined,
+        dateMin: filters.dateMin ? `${filters.dateMin}T00:00:00` : undefined,
+        prixMax: filters.prixMax ? Number(filters.prixMax) : undefined,
+      });
+    },
     staleTime: 60000,
   });
 
   // Client-side filtering for advanced filters not directly supported by backend TrajetController endpoint
   const trips = rawTrips?.filter(trip => {
-    // Note: Chauffeur interface needs to expose rating if we want to filter by it here,
-    // assuming it does or we mock it for now since the backend might not expose it on the standard list.
     const reqSeats = parseInt(filters.seatsMin) || 1;
     if (trip.placesDisponibles < reqSeats) return false;
     
-    // For now we'll assume there is a way to get driver rating or we just skip if we don't have it.
-    // If backend doesn't send it in GET /api/trajets, we rely on the Recommendations endpoint instead for rating-based matches.
-    
+    const minRating = parseFloat(filters.minRating) || 0;
     return true;
   });
 
@@ -48,41 +50,41 @@ export default function TripsPage() {
       <div className="pointer-events-none absolute -right-40 top-20 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_center,rgba(2,43,58,0.28),transparent_60%)] blur-2xl" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-        <section className="relative overflow-hidden rounded-[2.5rem] bg-[#0B1F2A] text-white px-6 py-10 sm:px-10 sm:py-12 shadow-2xl">
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,#0B1F2A_30%,#123A47_75%,#1F7A8C_120%)] opacity-90" />
+        <section className="relative overflow-hidden rounded-[2.5rem] bg-secondary text-white px-6 py-12 sm:px-12 shadow-2xl">
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,var(--color-secondary)_30%,var(--color-secondary-light)_75%,var(--color-primary)_120%)] opacity-95" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(191,219,247,0.25),transparent_55%)]" />
           <div className="relative z-10 max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#BFDBF7]">Explorer les trajets</p>
-            <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight font-display">
-              Rechercher un trajet
+            <p className="text-xs font-black uppercase tracking-[0.4em] text-accent/80 mb-3">{t('explorerTrajets') || 'EXPLORER LES TRAJETS'}</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight font-display leading-tight">
+              {t('searchTitle')}
             </h1>
-            <p className="mt-4 text-lg text-[#E1E5F2]">
-              Filtrez par ville, date et budget pour trouver la route parfaite pour votre voyage.
+            <p className="mt-6 text-lg text-accent/90 font-medium max-w-xl leading-relaxed">
+              {t('searchSubtitle')}
             </p>
           </div>
         </section>
 
-        <div className="mt-10 grid grid-cols-1 lg:grid-cols-[minmax(0,360px)_1fr] gap-8">
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-[minmax(0,360px)_1fr] gap-8 sm:gap-12">
           <div className="lg:sticky lg:top-24 h-fit">
             <TripFilters onSearch={setFilters} />
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-10 sm:space-y-12">
             <TripRecommendations />
 
-            <div>
+            <div className="space-y-6 sm:space-y-8">
               {isLoading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
-                  {[1, 2, 3, 4, 5, 6].map(i => (
-                    <div key={i} className="h-64 rounded-3xl bg-[var(--surface-hover)] border border-[var(--border)]" />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 animate-pulse">
+                  {[1, 2, 3, 4].map(i => (
+                    <div key={i} className="h-72 rounded-[2rem] bg-[var(--surface-hover)] border border-[var(--border)]" />
                   ))}
                 </div>
               ) : error ? (
-                <div className="p-6 bg-red-50 text-red-600 rounded-2xl border border-red-200">
-                  Une erreur est survenue lors de la recuperation des trajets.
+                <div className="p-8 bg-red-500/5 text-red-600 rounded-[2rem] border border-red-500/10 font-bold text-center">
+                  {t('error')}
                 </div>
               ) : trips && trips.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                   {trips.map((trip, i) => (
                     <motion.div
                       key={trip.id}
@@ -95,14 +97,16 @@ export default function TripsPage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-20 px-6 bg-[var(--surface)] border border-[var(--border)] rounded-3xl">
-                  <div className="w-16 h-16 bg-[var(--surface-hover)] rounded-full flex items-center justify-center mx-auto mb-4 text-[var(--text-muted)]">
-                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                <div className="text-center py-24 px-8 bg-[var(--surface)] border border-[var(--border)] rounded-[2.5rem] shadow-sm space-y-6">
+                  <div className="w-20 h-20 bg-[var(--surface-hover)] rounded-[2rem] flex items-center justify-center mx-auto text-primary/40 border-2 border-dashed border-[var(--border)]">
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                   </div>
-                  <h3 className="text-lg font-bold text-[var(--text)] mb-2">Aucun trajet trouve</h3>
-                  <p className="text-[var(--text-muted)]">
-                    Essayez de modifier vos criteres de recherche ou de creer une alerte.
-                  </p>
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-black text-[var(--text)] tracking-tight">{t('noResults')}</h3>
+                    <p className="text-[var(--text-muted)] font-medium max-w-sm mx-auto">
+                      {t('tryAdjusting')}
+                    </p>
+                  </div>
                 </div>
               )}
             </div>

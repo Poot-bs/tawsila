@@ -8,8 +8,10 @@ import com.covoiturage.model.Chauffeur;
 import com.covoiturage.model.Trajet;
 import com.covoiturage.model.TripStatus;
 import com.covoiturage.model.User;
+import com.covoiturage.model.UserRole;
 import com.covoiturage.model.Vehicule;
 import com.covoiturage.repository.TrajetRepository;
+import com.covoiturage.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,10 +22,12 @@ import java.util.UUID;
 public class TrajetService {
     private final TrajetRepository trajetRepository;
     private final AuthService authService;
+    private final UserRepository userRepository;
 
-    public TrajetService(TrajetRepository trajetRepository, AuthService authService) {
+    public TrajetService(TrajetRepository trajetRepository, AuthService authService, UserRepository userRepository) {
         this.trajetRepository = trajetRepository;
         this.authService = authService;
+        this.userRepository = userRepository;
     }
 
     public Trajet proposerTrajet(TrajetCreateRequest request) {
@@ -44,9 +48,10 @@ public class TrajetService {
         }
 
         User user = authService.getUtilisateur(request.getChauffeurId());
-        if (!(user instanceof Chauffeur chauffeur)) {
+        if (user.getRole() != UserRole.CHAUFFEUR || !(user instanceof Chauffeur)) {
             throw new ValidationException("Seul un chauffeur peut proposer un trajet");
         }
+        Chauffeur chauffeur = (Chauffeur) user;
 
         Vehicule vehicule = chauffeur.getVehicules().stream()
             .filter(v -> v.getId().equals(request.getVehiculeId()))
@@ -64,6 +69,7 @@ public class TrajetService {
             request.getPrixParPlace()
         );
         chauffeur.ajouterTrajet(trajet);
+        userRepository.save(chauffeur);
         return trajetRepository.save(trajet);
     }
 
@@ -77,8 +83,8 @@ public class TrajetService {
         return trajetRepository.findAll().stream()
             .filter(t -> t.getEtat() == TripStatus.OPEN)
             .filter(t -> t.getPlacesDisponibles() > 0)
-            .filter(t -> depart == null || t.getDepart().equalsIgnoreCase(depart))
-            .filter(t -> arrivee == null || t.getArrivee().equalsIgnoreCase(arrivee))
+            .filter(t -> isBlank(depart) || t.getDepart().equalsIgnoreCase(depart.trim()))
+            .filter(t -> isBlank(arrivee) || t.getArrivee().equalsIgnoreCase(arrivee.trim()))
             .filter(t -> dateMin == null || !t.getDateDepart().isBefore(dateMin))
             .filter(t -> dateMax == null || !t.getDateDepart().isAfter(dateMax))
             .filter(t -> prixMax == null || t.getPrixParPlace() <= prixMax)

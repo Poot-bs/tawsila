@@ -80,7 +80,7 @@ export function Header() {
               <span
                 className={cn(
                   'text-xl sm:text-2xl font-extrabold tracking-tight transition-colors duration-300',
-                  isSolid ? 'text-[#022B3A]' : 'text-[var(--text)] lg:text-white'
+                  isSolid ? 'text-[var(--text)]' : 'text-[var(--text)] lg:text-white'
                 )}
               >
                 Tawsila
@@ -89,7 +89,7 @@ export function Header() {
           </div>
 
           <nav
-            className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 bg-[#E1E5F2]/40 backdrop-blur-md p-1 rounded-full border border-white/20 shadow-inner"
+            className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 bg-[var(--surface-hover)]/40 backdrop-blur-md p-1 rounded-full border border-[var(--border)] shadow-inner"
             aria-label="Main navigation"
           >
             <NavLink href="/trips" currentPath={path} isSolid={isSolid}>
@@ -131,11 +131,11 @@ export function Header() {
             <ThemeToggle />
 
             {isAuthenticated ? (
-              <div className="flex items-center gap-3 ml-2 pl-3 border-l border-[#E1E5F2]">
+              <div className="flex items-center gap-3 ml-2 pl-3 border-l border-[var(--border)]">
                 <span
                   className={cn(
                     'text-sm font-bold transition-colors duration-300',
-                    isSolid ? 'text-[#022B3A]' : 'text-[var(--text)] lg:text-white/90'
+                    isSolid ? 'text-[var(--text)]' : 'text-[var(--text)] lg:text-white/90'
                   )}
                 >
                   {user?.name}
@@ -143,25 +143,25 @@ export function Header() {
                 <button
                   type="button"
                   onClick={handleLogout}
-                  className="text-sm font-bold bg-[#E1E5F2] hover:bg-red-100 text-[#022B3A] hover:text-red-700 px-5 py-2 rounded-full transition-colors"
+                  className="text-sm font-bold bg-[var(--surface-hover)] hover:bg-red-500/10 text-[var(--text)] hover:text-red-500 px-5 py-2 rounded-full transition-colors border border-[var(--border)]"
                 >
                   {t('logout')}
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-3 ml-2 pl-3 border-l border-white/20">
+              <div className="flex items-center gap-3 ml-2 pl-3 border-l border-[var(--border)]">
                 <Link href="/login">
                   <span
                     className={cn(
                       'inline-block text-sm font-bold px-5 py-2 rounded-full transition-colors cursor-pointer',
-                      isSolid ? 'text-[#022B3A] hover:bg-[#E1E5F2]' : 'text-[var(--text)] lg:text-white lg:hover:bg-white/10'
+                      isSolid ? 'text-[var(--text)] hover:bg-[var(--surface-hover)]' : 'text-[var(--text)] lg:text-white lg:hover:bg-white/10'
                     )}
                   >
                     {t('login')}
                   </span>
                 </Link>
                 <Link href="/register">
-                  <span className="inline-block text-sm font-bold bg-[#1F7A8C] hover:bg-[#155866] text-white px-6 py-2 rounded-full shadow-lg shadow-[#1F7A8C]/30 transition-all cursor-pointer">
+                  <span className="inline-block text-sm font-bold bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-full shadow-lg shadow-primary/30 transition-all cursor-pointer">
                     {t('register')}
                   </span>
                 </Link>

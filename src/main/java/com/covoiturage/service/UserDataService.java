@@ -8,6 +8,8 @@ import com.covoiturage.model.MoyenPaiement;
 import com.covoiturage.model.Passager;
 import com.covoiturage.model.User;
 import com.covoiturage.model.Vehicule;
+import com.covoiturage.model.UserRole;
+import com.covoiturage.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,16 +18,22 @@ import java.util.UUID;
 @Service
 public class UserDataService {
     private final AuthService authService;
+    private final UserRepository userRepository;
 
-    public UserDataService(AuthService authService) {
+    public UserDataService(AuthService authService, UserRepository userRepository) {
         this.authService = authService;
+        this.userRepository = userRepository;
     }
 
     public Vehicule addVehicule(VehiculeCreateRequest request) {
-        User user = authService.getUtilisateur(request.getChauffeurId());
-        if (!(user instanceof Chauffeur chauffeur)) {
-            throw new ValidationException("Seul un chauffeur peut ajouter un vehicule");
+        if (request == null || isBlank(request.getChauffeurId())) {
+            throw new ValidationException("chauffeurId obligatoire");
         }
+        User user = authService.getUtilisateur(request.getChauffeurId());
+        if (user.getRole() != UserRole.CHAUFFEUR || !(user instanceof Chauffeur)) {
+            throw new ValidationException("L'utilisateur " + request.getChauffeurId() + " n'est pas enregistre en tant que chauffeur. Role actuel: " + user.getRole());
+        }
+        Chauffeur chauffeur = (Chauffeur) user;
         Vehicule vehicule = new Vehicule(
             UUID.randomUUID().toString(),
             request.getMarque(),
@@ -34,15 +42,17 @@ public class UserDataService {
             request.getCapacite()
         );
         chauffeur.ajouterVehicule(vehicule);
+        // persist changes to the chauffeur so vehicle is stored in DB-backed repositories
+        userRepository.save(chauffeur);
         return vehicule;
     }
 
     public List<Vehicule> getVehicules(String chauffeurId) {
         User user = authService.getUtilisateur(chauffeurId);
-        if (!(user instanceof Chauffeur chauffeur)) {
+        if (user.getRole() != UserRole.CHAUFFEUR || !(user instanceof Chauffeur)) {
             throw new ValidationException("Utilisateur non chauffeur");
         }
-        return chauffeur.getVehicules();
+        return ((Chauffeur) user).getVehicules();
     }
 
     public MoyenPaiement addMoyenPaiement(MoyenPaiementCreateRequest request) {
@@ -57,6 +67,7 @@ public class UserDataService {
             request.getCardLast4()
         );
         passager.ajouterMoyenPaiement(moyenPaiement);
+        userRepository.save(passager);
         return moyenPaiement;
     }
 
@@ -79,13 +90,19 @@ public class UserDataService {
     public void evaluerChauffeur(String passagerId, String chauffeurId, int note) {
         User passagerUser = authService.getUtilisateur(passagerId);
         User chauffeurUser = authService.getUtilisateur(chauffeurId);
-        if (!(passagerUser instanceof Passager passager) || !(chauffeurUser instanceof Chauffeur chauffeur)) {
+        if (passagerUser.getRole() != UserRole.PASSAGER || chauffeurUser.getRole() != UserRole.CHAUFFEUR) {
             throw new ValidationException("Evaluation invalide");
         }
+        Passager passager = (Passager) passagerUser;
+        Chauffeur chauffeur = (Chauffeur) chauffeurUser;
         try {
             passager.evaluerChauffeur(chauffeur, note);
         } catch (IllegalArgumentException ex) {
             throw new ValidationException(ex.getMessage());
         }
+    }
+
+    private boolean isBlank(String s) {
+        return s == null || s.trim().isEmpty();
     }
 }
